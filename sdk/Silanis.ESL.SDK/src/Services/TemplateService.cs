@@ -33,7 +33,23 @@ namespace Silanis.ESL.SDK
                 Support.LogMethodExit(result);
                 return result;
             } catch (Exception e) {
-                throw new EslException ("Could not create a new package." + " Exception: " + e.Message);
+                throw new EslException ("Could not create a template." + " Exception: " + e.Message);
+            }
+        }
+        
+        internal PackageId CreatePackageFromTemplate(PackageId templateId, Package delta)
+        {
+            Support.LogMethodEntry(templateId, delta);
+            string path = template.UrlFor (UrlTemplate.CLONE_PACKAGE_PATH).Replace("{packageId}", templateId.Id)
+                .Build ();
+            try {
+                string deltaJson = JsonConvert.SerializeObject (delta, settings);
+                string response = restClient.Post(path, deltaJson);              
+                PackageId result = JsonConvert.DeserializeObject<PackageId> (response);
+                Support.LogMethodExit(result);
+                return result;
+            } catch (Exception e) {
+                throw new EslException ("Could not create a package from template." + " Exception: " + e.Message);
             }
         }
     }

@@ -104,6 +104,17 @@ namespace Silanis.ESL.SDK
             DocumentPackage sdkPackage = PackageBuilder.NewPackageNamed( templateName ).Build();
             return CreateTemplateFromPackage( originalPackageId, sdkPackage );
         }
+        
+        public PackageId CreatePackageFromTemplate(PackageId templateId, string packageName)
+        {
+            DocumentPackage sdkPackage = PackageBuilder.NewPackageNamed( packageName ).Build();
+            return CreatePackageFromTemplate( templateId, sdkPackage );
+        }
+        
+        public PackageId CreatePackageFromTemplate(PackageId templateId, DocumentPackage delta)
+        {
+            return templateService.CreatePackageFromTemplate( templateId, delta.ToAPIPackage() );
+        }
 
 		public SessionToken CreateSenderSessionToken()
 		{

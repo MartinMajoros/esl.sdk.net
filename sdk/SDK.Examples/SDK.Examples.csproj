@@ -95,7 +95,7 @@
     <Compile Include="src\GroupManagementExample.cs" />
     <Compile Include="src\UploadDocumentExample.cs" />
     <Compile Include="src\ReminderExample.cs" />
-    <Compile Include="src\CreateTemplateFromPackageExample.cs" />
+    <Compile Include="src\TemplateExample.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
