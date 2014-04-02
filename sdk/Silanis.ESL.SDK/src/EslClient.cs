@@ -24,6 +24,7 @@ namespace Silanis.ESL.SDK
 		private AccountService accountService;
 		private Services.ReminderService reminderService;
         private TemplateService templateService;
+		private AuthenticationService authenticationService;
 
         /// <summary>
         /// EslClient constructor.
@@ -48,6 +49,7 @@ namespace Silanis.ESL.SDK
 			accountService = new AccountService(restClient, this.baseUrl);
 			reminderService = new ReminderService(restClient, this.baseUrl);
             templateService = new TemplateService(restClient, this.baseUrl);
+			authenticationService = new AuthenticationService(restClient, this.baseUrl);
 		}
 
 		private String AppendServicePath(string baseUrl)
@@ -130,6 +132,7 @@ namespace Silanis.ESL.SDK
 			return templateId;
 		}
 
+		[Obsolete]
 		public SessionToken CreateSenderSessionToken()
 		{
 			return sessionService.CreateSenderSessionToken();
@@ -144,6 +147,11 @@ namespace Silanis.ESL.SDK
 		public SessionToken CreateSignerSessionToken(PackageId packageId, string signerId)
 		{
 			return sessionService.CreateSignerSessionToken (packageId, signerId);
+		}
+
+		public AuthenticationToken CreateAuthenticationToken()
+		{
+			return authenticationService.CreateAuthenticationToken();
 		}
 
 		public byte[] DownloadDocument (PackageId packageId, string documentId)
