@@ -37,8 +37,8 @@ namespace SDK.Examples
                 .DescribedAs("This is a package created using the e-SignLive SDK")
                 .ExpiresOn(DateTime.Now.AddMonths(1))
                 .WithEmailMessage("This message should be delivered to all signers")
-                .WithSigner(SignerBuilder.NewSignerPlaceholderWithRoleId(new RoleId("PlaceholderRoleId1")))
-                .WithSigner(SignerBuilder.NewSignerPlaceholderWithRoleId(new RoleId("PlaceholderRoleId2")))
+                .WithSigner(SignerBuilder.NewSignerPlaceholder(new Placeholder("PlaceholderRoleId1")))
+                .WithSigner(SignerBuilder.NewSignerPlaceholder(new Placeholder("PlaceholderRoleId2")))
 //                .WithDocument(DocumentBuilder.NewDocumentNamed("First Document")
 //                              .FromStream(fileStream1, DocumentType.PDF)
 //                              .WithSignature(SignatureBuilder.SignatureFor(new RoleId("PlaceholderRoleId1"))
@@ -74,14 +74,14 @@ namespace SDK.Examples
                                                                         .WithLastName("Smith1")
                                                                         .WithTitle("Managing Director1")
                                                                         .WithCompany("Acme Inc.1")
-                                                                        .WithRoleId( new RoleId( "PlaceholderRoleId1" ) ) )
+                                                                        .WithRoleId( new Placeholder( "PlaceholderRoleId1" ) ) )
                                              .WithSigner( SignerBuilder.NewSignerWithEmail( email2 )
                                                                         .WithCustomId("Client2")
                                                                         .WithFirstName("John2")
                                                                         .WithLastName("Smith2")
                                                                         .WithTitle("Managing Director2")
                                                                         .WithCompany("Acme Inc.2")
-                                                                        .WithRoleId( new RoleId( "PlaceholderRoleId2" ) ) )
+                                                                        .WithRoleId( new Placeholder( "PlaceholderRoleId2" ) ) )
                                              .Build() );
                                              
             DocumentPackage originalPackage = eslClient.GetPackage( originalPackageId );

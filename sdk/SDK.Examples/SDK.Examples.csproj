@@ -46,7 +46,7 @@
     <DebugType>none</DebugType>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>SDK.Examples.CreateTemplateExample</StartupObject>
+    <StartupObject>SDK.Examples.DesignerSessionCreationExample</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

@@ -41,6 +41,8 @@ namespace SDK.Examples
 
 			Console.WriteLine("packageId = " + packageId.Id);
 			Console.WriteLine("authentication token = " + token.Token);
+
+			Console.WriteLine("https://sandbox.e-signlive.com/auth?authenticationToken={0}&target=https://sandbox.e-signlive.com/designer/{1}", token.Token, packageId.Id);
         }
     }
 }
