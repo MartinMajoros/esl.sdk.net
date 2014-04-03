@@ -152,7 +152,6 @@ namespace Silanis.ESL.SDK
         {
             Silanis.ESL.API.Role role = new Silanis.ESL.API.Role();
 
-            role.Name = "signer" + index;
             if ( !signer.IsPlaceholderSigner() ) {
                 role.AddSigner(signer.ToAPISigner());
             }
@@ -161,11 +160,12 @@ namespace Silanis.ESL.SDK
 
             if (String.IsNullOrEmpty(signer.RoleId))
             {
-                role.Id = "role" + index;
+                role.Id = role.Name = "signer" + index;
             }
             else
             {
                 role.Id = signer.RoleId;
+                role.Name = signer.RoleId;
             }
 
             if (!String.IsNullOrEmpty(signer.Message))
