@@ -195,7 +195,7 @@ namespace Silanis.ESL.SDK.Builder
             {
                 attributes = new DocumentPackageAttributes();
             }
-            attributes.append( "sdk", ".NET v" + CurrentVersion );
+            attributes.Append( "sdk", ".NET v" + CurrentVersion );
             package.Attributes = attributes;
 
 			Support.LogMethodExit(package);
