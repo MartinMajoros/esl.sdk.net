@@ -812,6 +812,35 @@ namespace Silanis.ESL.SDK.Services
 			}
 		}
 
+        public Page<DocumentPackage> GetPackagesUpdatedWithinDateRange (DocumentPackageStatus status, PageRequest request, String startDate, String endDate)
+        {
+            string path = template.UrlFor (UrlTemplate.PACKAGE_LIST_STATUS_DATE_RANGE_PATH)
+                .Replace ("{status}", status.ToString ())
+                    .Replace ("{from}", request.From.ToString ())
+                    .Replace ("{to}", request.To.ToString())
+                    .Replace ("{lastUpdatedStartDate}", startDate)
+                    .Replace ("{lastUpdatedEndDate}", endDate)
+                    .Build();
+
+            try
+            {
+                string response = restClient.Get(path);
+                Silanis.ESL.API.Result<Silanis.ESL.API.Package> results = JsonConvert.DeserializeObject<Silanis.ESL.API.Result<Silanis.ESL.API.Package>> (response, settings);
+
+                return ConvertToPage(results, request);
+            }
+            catch (EslServerException e)
+            {
+                Console.WriteLine (e.StackTrace);
+                throw new EslServerException ("Could not get package list. Exception: " + e.Message, e.ServerError, e);  
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine (e.StackTrace);
+                throw new EslException ("Could not get package list. Exception: " + e.Message, e);  
+            }
+        }
+
         public Page<DocumentPackage> GetTemplates(PageRequest request) {
             string path = template.UrlFor (UrlTemplate.TEMPLATE_LIST_PATH)
                     .Replace ("{from}", request.From.ToString ())

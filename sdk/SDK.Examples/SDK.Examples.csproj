@@ -50,6 +50,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="nunit.framework" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -131,6 +132,7 @@
     <Compile Include="src\SignerInformationForEquifaxUSAExample.cs" />
     <Compile Include="src\MixedSignerAuthenticationExample.cs" />
     <Compile Include="src\MobileCaptureSignatureStyleExample.cs" />
+    <Compile Include="src\GetPackagesCompletedWithinDateRangeExample.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
